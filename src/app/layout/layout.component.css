@@ -36,12 +36,25 @@ h2{
     font-weight: 700;
     color: black;
 }
-ul{
+.ul{
     width: 100%;
     height: auto;
-    padding: 20px;
+    padding: 0px;
     margin: 0;
     display: block;
+}
+li{
+    font-size: 24px;
+    font-weight: 600;
+    color: black;
+    list-style: none;
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+}
+li:hover{
+    background: rgba(128, 128, 128, 0.24);
+    cursor: pointer;
 }
 .main{
     width: 85%;
