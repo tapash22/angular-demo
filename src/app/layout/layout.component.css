@@ -1,7 +1,7 @@
 .layout{
  display: flex;
  justify-content: center;
- align-items: center;
+ align-items: start;
  width: 100%;
  height: 100%;
  background: rgba(128, 128, 128, 0.356);
@@ -61,7 +61,7 @@ li:hover{
     height: 100%;
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: start;
 }
 
 .main-layout{
