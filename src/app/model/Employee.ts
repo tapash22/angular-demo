@@ -21,3 +21,21 @@ export class Employee {
     this.createdDate = new Date();
   }
 }
+
+export interface IParentDepartment{
+  departmentId: number,
+  departmentName: string,
+  departmentLogo:string,
+}
+
+export interface IChildDepartment{
+  childDeptId: number,
+  parentDeptId: number,
+  departmentName:string,
+}
+
+export interface ApiResponse{
+  message: string,
+  result: boolean,
+  data:any
+}

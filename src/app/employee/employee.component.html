@@ -23,4 +23,12 @@
             </tr>
         </tbody>
     </table>
+    <ul *ngIf="parentDepList && parentDepList.length > 0" style="background: red;">
+        hi
+        <li *ngFor="let item of parentDepList">
+          {{ item?.departmentName }} 
+        </li>
+      </ul>
+      
+      
 </div>
