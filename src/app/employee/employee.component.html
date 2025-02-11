@@ -3,47 +3,99 @@
     <h2>Employee List</h2>
     <button class="add-button">Add Employee</button>
   </div>
-    <table>
-        <thead>
-            <tr>
-                <th>ID</th>
-                <th>Name</th>
-                <th>Contact</th>
-                <th>Email</th>
-                <th>Department</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>1</td>
-                <td>John Doe</td>
-                <td>1234567890</td>
-                <td>johncom</td>
-                <td>IT</td>
-            </tr>
-        </tbody>
-    </table>
+  <table border="1">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Contact</th>
+        <th>Email</th>
+        <th>Department</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of employeeList; let i = index">
+        <td>{{ item.employeeId }}</td>
+        <td>{{ item.employeeName }}</td>
+        <td>{{ item.contactNo }}</td>
+        <td>{{ item.emailId }}</td>
+        <td>{{ item.deptId }}</td>
+      </tr>
+    </tbody>
+  </table>
+  
 
-<div class="department-form">
-  <select id="depId" [(ngModel)]="depId" (change)="onDepartmentChange()">
-    <option selected>select parent depertment</option>
+  <div class="department-form">
+    <form>
+      <div class="row">
+        <div class="col">
+          <label for="user">Employee Name</label>
+          <input type="text" name="employeeName" placeholder="name" [(ngModel)]="employeeObj.employeeName" />
+        </div>
+        <div class="col">
+          <label for="contact">Contact Number</label>
+          <input type="text" name="contactNo" placeholder="contact no" [(ngModel)]="employeeObj.contactNo" />
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <label for="email">Employee Email</label>
+          <input type="text" name="emailId" placeholder="email" [(ngModel)]="employeeObj.emailId" />
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <select
+            id="depId"
+            [(ngModel)]="employeeObj.depId"
+            (change)="onDepartmentChange()"
+            name="depId"
+          >
+            <option selected>select parent depertment</option>
 
-    @for(item of parentDepList; track $index){
-      <option [value]="item.departmentId" >{{item.departmentName}} -{{item.departmentId}}</option>
-    }
+            @for(item of parentDepList; track $index){
+            <option [value]="item.departmentId">
+              {{ item.departmentName }} -{{ item.departmentId }}
+            </option>
+            }
+          </select>
+        </div>
 
-  </select>
+        <div class="col">
+          <select>
+            <option>select child depertment</option>
 
-  <select >
-    <option>select child depertment</option>
-
-    @for(item of childDepList; track $index){
-      <option [value]="item.childDeptId" >{{item.departmentName}}</option>
-    }
-
-  </select>
-</div>
-    
-      
-      
+            @for(item of childDepList; track $index){
+            <option [value]="item.childDeptId">
+              {{ item.departmentName }}
+            </option>
+            }
+          </select>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <label for="email">Employee Password</label>
+          <input type="password" name="password" placeholder="password" [(ngModel)]="employeeObj.password" />
+        </div>
+        <div class="col">
+          <label for="email">Employee Role</label>
+          <select id="role" name="gender" [(ngModel)]="employeeObj.gender">
+            <option selected>select Gender</option>
+            <option selected>Male</option>
+            <option selected>Female</option>
+          </select>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col" >
+          <label for="role">Employee Role</label>
+          <input type="text" name="role" placeholder="Role" [(ngModel)]="employeeObj.role" />
+        </div>
+      </div>
+      <div class="row">
+        <button type="button" (click)="onSaveEmp()" class="add-button">submit</button>
+      </div>
+    </form>
+  </div>
 </div>

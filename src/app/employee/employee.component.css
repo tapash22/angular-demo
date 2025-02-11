@@ -51,9 +51,56 @@ th {
     width: 100%;
     height: 100%;
     overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
+form{
+    display: block;
+    padding: 10px;
+    margin: 0;
+}
+.row{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px;
+}
+.col{
+    width: 50%;
+    height: auto;
+    padding: 5px;
+    margin: 0;
+    display: block;
+}  
+  .col > input {
+    width: 100%;
+    height: 40px;
+    border: none;
+    border-radius: 10px;
+    padding: 15px;
+    background: #514869;
+    color: #f0ffffde;
+    font-size: 12px;
+    box-shadow: 0px 10px 40px #00000056;
+    outline: none;
+    box-sizing: border-box;
+  }
+  
+  .col > input::placeholder {
+    color: #f0ffff94;
+    width: 100%;
+    height: 40px;
+  }
+  
+  .col > label {
+    color: #000;
+    margin-bottom: 10px;
+    width: 100%;
+    padding: 5px;
+  }
 select{
-    width: 300px;
+    width: 100%;
     height: 40px;
     padding: 5px;
     border-radius: 5px;

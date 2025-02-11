@@ -1,12 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import {
   ApiResponse,
+  Employee,
   IChildDepartment,
   IParentDepartment,
 } from '../model/Employee';
 import { MasterService } from '../service/master.service';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { EmployeeService } from '../service/employee.service';
 
 @Component({
   selector: 'app-employee',
@@ -19,12 +21,17 @@ export class EmployeeComponent implements OnInit {
   parentDepList: IParentDepartment[] = [];
   childDepList: IChildDepartment[] = [];
 
+  employeeList: Employee[] = []
+
   depId: number = 0;
 
-  constructor(private masterService: MasterService) {}
+  employeeObj:Employee = new Employee()
+
+  constructor(private masterService: MasterService,private empService: EmployeeService) {}
 
   ngOnInit(): void {
     this.getParentDepartmentList();
+    this.getEmployes();
   }
 
   getParentDepartmentList() {
@@ -43,11 +50,27 @@ export class EmployeeComponent implements OnInit {
   }
 
   onDepartmentChange() {
-    console.log(this.depId)
     this.masterService.getChildDepertment(this.depId).subscribe((res:ApiResponse)=>{
       this.childDepList = res.data
-    console.log(this.childDepList)
-
     })
   }
+
+  onSaveEmp() {
+    this.empService.createEmployee(this.employeeObj).subscribe((res: ApiResponse) => {
+      if (res.result) {
+        alert('Created');
+      } else {
+        alert(res.message);
+      }
+    });
+  }
+
+
+  getEmployes(){
+    this.empService.getEmployees().subscribe((res:any)=>{
+      this.employeeList = res
+    })
+  }
+
+  
 }
