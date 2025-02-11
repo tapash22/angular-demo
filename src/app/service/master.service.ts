@@ -12,4 +12,8 @@ export class MasterService {
   getParentDepertment(){
     return this.http.get<ApiResponse>("/api/EmployeeManagement/GetParentDepartment")
   }
+
+  getChildDepertment(id:number){
+    return this.http.get<ApiResponse>("/api/EmployeeManagement/GetChildDepartmentByParentId?deptId="+id)
+  }
 }

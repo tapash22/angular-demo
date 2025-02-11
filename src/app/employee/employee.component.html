@@ -23,12 +23,27 @@
             </tr>
         </tbody>
     </table>
-    <ul *ngIf="parentDepList && parentDepList.length > 0" style="background: red;">
-        hi
-        <li *ngFor="let item of parentDepList">
-          {{ item?.departmentName }} 
-        </li>
-      </ul>
+
+<div class="department-form">
+  <select id="depId" [(ngModel)]="depId" (change)="onDepartmentChange()">
+    <option selected>select parent depertment</option>
+
+    @for(item of parentDepList; track $index){
+      <option [value]="item.departmentId" >{{item.departmentName}} -{{item.departmentId}}</option>
+    }
+
+  </select>
+
+  <select >
+    <option>select child depertment</option>
+
+    @for(item of childDepList; track $index){
+      <option [value]="item.childDeptId" >{{item.departmentName}}</option>
+    }
+
+  </select>
+</div>
+    
       
       
 </div>
