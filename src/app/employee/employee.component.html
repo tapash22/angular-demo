@@ -11,6 +11,7 @@
         <th>Contact</th>
         <th>Email</th>
         <th>Department</th>
+        <th>Action</th>
       </tr>
     </thead>
     <tbody>
@@ -20,6 +21,14 @@
         <td>{{ item.contactNo }}</td>
         <td>{{ item.emailId }}</td>
         <td>{{ item.deptId }}</td>
+        <td>
+          <button style="height: 30px; width: auto;padding: 5px; border-radius: 5px;" (click)="editEmployee(item)">
+            Edit
+          </button>
+          <button style="height: 30px; width: auto;padding: 5px; border-radius: 5px;" (click)="deleteEmployee(item.employeeId)">
+            delete
+          </button>
+        </td>
       </tr>
     </tbody>
   </table>
@@ -94,7 +103,13 @@
         </div>
       </div>
       <div class="row">
-        <button type="button" (click)="onSaveEmp()" class="add-button">submit</button>
+        @if(employeeObj.employeeId == 0){
+
+          <button type="button" (click)="onSaveEmp()" class="add-button">submit</button>
+        }@else{
+          <button type="button" (click)="updateEmp()" class="add-button">Update</button>
+        }
+
       </div>
     </form>
   </div>

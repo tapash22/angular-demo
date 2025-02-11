@@ -15,8 +15,16 @@ export class EmployeeService {
     return this.http.post<ApiResponse>('/api/EmployeeManagement/CreateEmployee', employee);
   }
 
+  updateEmployee(employee: Employee): Observable<ApiResponse> {
+    return this.http.put<ApiResponse>('/api/EmployeeManagement/UpdateEmployee/'+employee.employeeId, employee);
+  }
+
   getEmployees() {
-    return this.http.get<Employee>("/api/EmployeeManagement/GetAllEmployees")
+    return this.http.get<Employee[]>("/api/EmployeeManagement/GetAllEmployees")
+  }
+
+  deleteEmployee(id:number) {
+    return this.http.delete<Employee>("/api/EmployeeManagement/DeleteEmployee/"+id)
   }
   
 }

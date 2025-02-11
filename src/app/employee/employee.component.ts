@@ -65,11 +65,37 @@ export class EmployeeComponent implements OnInit {
     });
   }
 
+  updateEmp() {
+    this.empService.updateEmployee(this.employeeObj).subscribe((res: ApiResponse) => {
+      if (res.result) {
+        alert('update');
+      } else {
+        alert(res.message);
+      }
+    });
+  }
+
 
   getEmployes(){
     this.empService.getEmployees().subscribe((res:any)=>{
       this.employeeList = res
     })
+  }
+
+  deleteEmployee(id:number){
+    const result = confirm("Are you want to delete Employee");
+    if(result){
+      this.empService.deleteEmployee(id).subscribe((res:any)=>{
+        alert('employee delete successfully');
+        this.getEmployes()
+      },error =>{
+        alert("error from api")
+      })
+    }
+  }
+
+  editEmployee(obj:Employee){
+    this.employeeObj = obj
   }
 
   
