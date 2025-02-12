@@ -22,15 +22,15 @@
           <td>{{ item.contactNo }}</td>
           <td>{{ item.emailId }}</td>
           <td>{{ item.deptId }}</td>
-          <td>
+          <td style="display: flex; justify-content: space-around;">
             <button
-              style="height: 30px; width: auto; padding: 5px; border-radius: 5px"
+              style="height: auto; width: auto; padding: 10px; border-radius: 5px; background: white; color: black;"
               (click)="editEmployee(item)"
             >
               Edit
             </button>
             <button
-              style="height: 30px; width: auto; padding: 5px; border-radius: 5px"
+              style="height: auto; width: auto; padding: 10px; border-radius: 5px;background: white; color: black;"
               (click)="deleteEmployee(item.employeeId)"
             >
               delete

@@ -103,6 +103,8 @@ export class EmployeeComponent implements OnInit {
 
   editEmployee(obj:Employee){
     this.employeeObj = obj
+    this.showSidePanel.set(true)
+
   }
 
   
