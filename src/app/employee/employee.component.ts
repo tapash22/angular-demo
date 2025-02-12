@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, signal } from '@angular/core';
 import {
   ApiResponse,
   Employee,
@@ -25,6 +25,8 @@ export class EmployeeComponent implements OnInit {
 
   depId: number = 0;
 
+  showSidePanel = signal<boolean>(false)
+
   employeeObj:Employee = new Employee()
 
   constructor(private masterService: MasterService,private empService: EmployeeService) {}
@@ -32,6 +34,10 @@ export class EmployeeComponent implements OnInit {
   ngOnInit(): void {
     this.getParentDepartmentList();
     this.getEmployes();
+  }
+
+  createNew(){
+    this.showSidePanel.set(true)
   }
 
   getParentDepartmentList() {
@@ -69,6 +75,7 @@ export class EmployeeComponent implements OnInit {
     this.empService.updateEmployee(this.employeeObj).subscribe((res: ApiResponse) => {
       if (res.result) {
         alert('update');
+        this.getEmployes()
       } else {
         alert(res.message);
       }
